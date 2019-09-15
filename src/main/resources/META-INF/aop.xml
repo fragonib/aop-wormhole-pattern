@@ -1,0 +1,27 @@
+<aspectj>
+
+    <!--
+      - Aspects to weave
+      -->
+    <aspects>
+        <aspect name="org.fragonib.wormhole.context.RequestMetadataAspect" />
+    </aspects>
+
+    <!--
+      - Targets of weaving
+      -
+      - Only weave classes in our application-specific packages
+      - Use: options="-showWeaveInfo -verbose -debug" for debugging purposes
+      -->
+    <weaver options="-verbose -showWeaveInfo">
+
+        <!-- Aspects to be used -->
+        <include within="org.fragonib.wormhole.context.RequestMetadataAspect" />
+
+        <!-- Actual targets -->
+        <include within="org.fragonib.wormhole.context.RequestMetadataHolder" />
+        <include within="org.fragonib.wormhole.greeting.GreetingController" />
+
+    </weaver>
+
+</aspectj>
